@@ -1,0 +1,10 @@
+name: Trigger Lint Check on PR
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  call-lint-check:
+    uses: https://github.com/Skill-Forge-Project/ci-templates/blob/master/.github/workflows/lint-check.yml@master
