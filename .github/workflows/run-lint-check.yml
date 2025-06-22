@@ -7,4 +7,4 @@ on:
 
 jobs:
   call-lint-check:
-    uses: https://github.com/Skill-Forge-Project/ci-templates/blob/master/.github/workflows/lint-check.yml@master
+    uses: Skill-Forge-Project/ci-templates/blob/master/.github/workflows/lint-check.yml@master
