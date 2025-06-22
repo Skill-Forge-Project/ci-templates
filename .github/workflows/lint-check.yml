@@ -1,0 +1,25 @@
+name: Lint Check (Reusable)
+
+on:
+  workflow_call:  # This makes it reusable
+
+jobs:
+  lint-submodules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Scan for print() and console.log()
+        run: |
+          set -e
+          echo "Scanning submodules..."
+          for dir in $(find . -type f \( -name '*.js' -o -name '*.ts' -o -name '*.py' \)); do
+            if grep -nE 'print\s*\(|console\.log\s*\(' "$dir"; then
+              echo "Debug statements found!"
+              exit 1
+            fi
+          done
+
