@@ -17,10 +17,11 @@ jobs:
           set -e
           echo "Scanning submodules..."
           for dir in $(find . -type f \( -name '*.js' -o -name '*.ts' -o -name '*.py' \)); do
-            if grep -nE '^\s*print\s*\(|console\.log\s*\(' "$dir"; then
+            if grep -nE '^\s*\bprint\s*\(|console\.log\s*\(' "$dir"; then
               echo "Debug statements found!"
               exit 1
             fi
           done
+
 
 
